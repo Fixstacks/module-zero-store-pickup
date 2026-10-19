@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Zero_StorePickup">
+        <sequence>
+            <module name="Zero_Core"/>
+            <module name="Zero_Checkout"/>
+            <module name="Magento_InventoryInStorePickupApi"/>
+            <module name="Magento_InventoryInStorePickupQuote"/>
+            <module name="Magento_InventoryInStorePickupShippingApi"/>
+        </sequence>
+    </module>
+</config>

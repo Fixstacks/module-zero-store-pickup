@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © 2026 Roman Pasichnyk
+ * SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+ *
+ * The footer's link to the store locator, only where the website has stores.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Zero\StorePickup\ViewModel\Stores $stores
+ */
+$stores = $block->getData('stores');
+if (!$stores->locatorEnabled() || !$stores->hasStores()) {
+    return;
+}
+?>
+<li class="list-none">
+    <a href="<?= $escaper->escapeUrl($block->getUrl('storelocator')) ?>"
+       class="text-primary-content hover:text-base-100 hover:underline underline-offset-2"><?= $escaper->escapeHtml($stores->title()) ?></a>
+</li>

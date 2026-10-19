@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="zero_store_pickup" translate="label" type="text" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Store Pickup</label>
+            <tab>zero</tab>
+            <resource>Zero_StorePickup::config</resource>
+            <group id="locator" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Store Locator</label>
+                <comment>The stores are Magento's pickup locations: Stores > Inventory > Sources, "Use as Pickup Location", with a frontend name, address and description (opening hours). The delivery method is Magento's In-Store Pickup (Sales > Delivery Methods > In-Store Pickup Delivery); Zero Checkout lists the stores where the whole cart is in stock.</comment>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Store Locator Page</label>
+                    <comment>/storelocator: the stores of this website with their address, hours, phone, a map and directions.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Page Title</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="maps" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Maps</label>
+                    <comment>A "Map" under each store with coordinates (OpenStreetMap). It loads only when the visitor opens it, so nothing goes to OpenStreetMap before that.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

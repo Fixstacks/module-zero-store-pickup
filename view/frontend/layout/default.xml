@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+
+    Footer: "Our stores", where the website has stores.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="footer_links">
+            <block name="zero-store-locator-link" template="Zero_StorePickup::footer-link.phtml">
+                <arguments>
+                    <argument name="stores" xsi:type="object">Zero\StorePickup\ViewModel\Stores</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

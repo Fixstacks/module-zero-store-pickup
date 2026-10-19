@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+    The store to pick up from, right after the shipping methods.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="zero.checkout.shipping.after">
+            <block class="Magento\Framework\View\Element\Template" name="zero.store.pickup"
+                   template="Zero_StorePickup::checkout.phtml">
+                <arguments>
+                    <argument name="stores" xsi:type="object">Zero\StorePickup\ViewModel\Stores</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

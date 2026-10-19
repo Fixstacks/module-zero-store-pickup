@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright © 2026 Roman Pasichnyk
+ * SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+ *
+ * The store to pick up from, after the shipping methods, shown by CSS while
+ * In-Store Pickup is picked (view/frontend/zero/tailwind.css). Only the
+ * stores that have the whole cart; checked again on order (PickupValidator).
+ * No script: radio buttons in the checkout form.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Zero\StorePickup\ViewModel\Stores $stores
+ */
+$stores = $block->getData('stores');
+$cards = $stores->forCart();
+if (!$cards) {
+    return;
+}
+$chosen = $stores->chosen() ?: (count($cards) === 1 ? $cards[0]['code'] : '');
+?>
+<fieldset class="store-pickup-panel mt-4 flex-col gap-3 rounded-field border border-base-300 p-4" data-store-pickup>
+    <legend class="text-sm font-semibold px-1"><?= $escaper->escapeHtml(__('Pick up from')) ?></legend>
+    <p class="text-sm text-base-content/70">
+        <?= $escaper->escapeHtml(__('Stores that have everything in your cart. We email you when your order is ready to pick up; your address above stays the billing address.')) ?>
+    </p>
+    <?php foreach ($cards as $card): ?>
+        <label class="flex items-start gap-3 rounded-field border border-base-300 p-3 cursor-pointer has-[:checked]:border-primary">
+            <input type="radio" name="<?= $escaper->escapeHtmlAttr($stores->fieldName()) ?>"
+                   value="<?= $escaper->escapeHtmlAttr($card['code']) ?>"
+                   class="radio radio-sm mt-0.5" <?= $card['code'] === $chosen ? 'checked' : '' ?>>
+            <span class="flex flex-col gap-0.5 text-sm">
+                <span class="font-semibold"><?= $escaper->escapeHtml($card['name']) ?></span>
+                <span class="text-base-content/70"><?= $escaper->escapeHtml(implode(', ', $card['lines'])) ?></span>
+                <?php if ($card['hours'] !== ''): ?>
+                    <span class="text-base-content/70"><?= $escaper->escapeHtml($card['hours']) ?></span>
+                <?php endif; ?>
+            </span>
+        </label>
+    <?php endforeach; ?>
+    <?php if ($stores->locatorEnabled()): ?>
+        <a class="link text-sm self-start" href="<?= $escaper->escapeUrl($block->getUrl('storelocator')) ?>" target="_blank" rel="noopener">
+            <?= $escaper->escapeHtml(__('Store hours, maps and directions')) ?>
+        </a>
+    <?php endif; ?>
+</fieldset>

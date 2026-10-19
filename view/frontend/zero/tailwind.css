@@ -1,0 +1,22 @@
+/**
+ * Copyright © 2026 Roman Pasichnyk
+ * SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+ *
+ * Picked up by the Zero theme build (scripts/collect-module-styles.mjs)
+ * while Zero_StorePickup is enabled.
+ */
+@source "../templates/**/*.phtml";
+
+/*
+ * The store choice shows while In-Store Pickup is picked: the panel is a
+ * sibling of #shipping-methods (zero.checkout.shipping.after).
+ */
+@layer components {
+    .store-pickup-panel {
+        display: none;
+    }
+
+    #shipping-methods:has(input[value="instore_pickup"]:checked) ~ .store-pickup-panel {
+        display: flex;
+    }
+}
