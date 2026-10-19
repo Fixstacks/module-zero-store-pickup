@@ -2,7 +2,7 @@
     "name": "fixstacks/module-zero-store-pickup",
     "description": "Zero for Magento Open Source: Magento's In-Store Pickup in Zero Checkout, only stores that can take the whole cart, and a store locator page with maps on demand.",
     "type": "magento2-module",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
@@ -36,8 +36,8 @@
         "magento/module-inventory-sales-api": "*",
         "magento/module-quote": "*",
         "magento/module-store": "*",
-        "fixstacks/module-zero-core": "^1.1",
-        "fixstacks/module-zero-checkout": "^1.1"
+        "fixstacks/module-zero-core": "^1.2",
+        "fixstacks/module-zero-checkout": "^1.2"
     },
     "autoload": {
         "files": [
