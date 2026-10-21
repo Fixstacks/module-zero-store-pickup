@@ -1,4 +1,4 @@
-# fixstacks/module-zero-store-pickup — licensing
+# zerofront/module-zero-store-pickup — licensing
 
 Copyright © 2026 Roman Pasichnyk.
 
